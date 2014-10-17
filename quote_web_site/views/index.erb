@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+  <Title>Quick CloudFoundry Demo</Title>
+</HEAD>
+<Body>
+    <form action="/addMovie" method="POST">
+      <label for="title">Title: </label>
+      <input type="text" name="title">
+      <label for="quote">Quote: </label>
+      <input type="text" name="quote">
+      <input type="submit"/>
+    </form>
+
+    <div name="results">
+        <% @movies.each do |movie| %>
+            <%= movie.title %> <%= movie.quote %> <br>
+        <% end %>
+
+    </div>
+</Body>
+</HTML>
