@@ -1,9 +1,8 @@
 # encoding: UTF-8
-require 'mongo_mapper'
+require 'redis'
+require 'ohm'
 
-class Movie
-  include MongoMapper::Document
-
-  key :title,            String
-  key :quote,            String
+class Movie < Ohm::Model
+  attribute :title
+  attribute :quote
 end
