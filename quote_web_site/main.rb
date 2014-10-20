@@ -13,9 +13,11 @@ configure do
     credentials = vcap["user-provided"][0]["credentials"]
     host = credentials["host"]
     port = credentials["port"]
-    
+
     url = "redis://#{host}:#{port}"
   end
+
+  set :local_port, ENV['VCAP_APP_PORT']
 
   puts "VCAP_SERVICES is #{url}"
   Ohm.redis = Redic.new(url)
@@ -24,4 +26,3 @@ end
 require './models/init'
 require './helpers/init'
 require './routes/init'
-

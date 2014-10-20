@@ -1,21 +1,68 @@
 <HTML>
 <HEAD>
-  <Title>Quick CloudFoundry Demo</Title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style type="text/css">
+body {
+width: 800px;
+}
+.submit_button {
+position: relative;
+top: -43px;
+left: 410px;
+}
+label {  
+display: block;  
+}
+input[type="text"] {
+width: 350px;
+}
+</style>
+
+<Title>Quick CloudFoundry Demo</Title>
 </HEAD>
 <Body>
-    <form action="/addMovie" method="POST">
-      <label for="title">Title: </label>
-      <input type="text" name="title">
-      <label for="quote">Quote: </label>
-      <input type="text" name="quote">
-      <input type="submit"/>
-    </form>
+<h1>Quote Server - Instance <%= @instance_name %></h1>
 
-    <div name="results">
-        <% @movies.each do |movie| %>
-            <%= movie.title %> <%= movie.quote %> <br>
-        <% end %>
+<div name="form">
+  <form action="/addMovie" method="POST">
+  <div id="input_field">
+    <label for="title">Title: </label>
+    <input type="text" name="title">
+  </div>
+  <div id="input_field">
+    <label for="quote">Quote: </label>
+    <input type="text" name="quote">
+  </div>
+  <br>
+  <div id="submit_button" name="submit_button">
+    <input type="submit"/>
+  </div>
+  </form>
+</div>
 
-    </div>
+<div name="results">
+  <table>
+  <% @movies.each do |movie| %>
+  <div id="result_pair">
+      <tr>
+        <td style="width:150px;"><%= movie.title %></td><td><%= movie.quote %></td>
+      </tr>
+  </div>
+  <% end %>
+  </table>
+</div>
+
+<div name="instance">
+  <form action="/killInstance" method="GET">
+    <input type=submit value="Kill this instance"/>
+  </form>
+</div>
+
+<div name="instance">
+  <form action="/clearAll" method="GET">
+    <input type=submit value="Clear all quotes"/>
+  </form>
+</div>
+
 </Body>
 </HTML>

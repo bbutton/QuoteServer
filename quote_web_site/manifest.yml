@@ -1,0 +1,6 @@
+---
+applications:
+- name: site
+  command: ruby main.rb
+  services:
+  - redis-cups
